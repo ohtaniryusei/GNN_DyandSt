@@ -9,7 +9,6 @@ from full_model import FullModel
 from utils.data_loader_mooc import load_mooc_dynamic_dataset, build_static_graph_from_mooc  # これ後で作ります！
 
 def train():
-    
 
     dataset = JODIEDataset(root='/workspaces/GNN_DyandSt/data', name='MOOC')
 
@@ -31,10 +30,10 @@ def train():
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # --- Static Graph ---
-    static_graph = build_static_graph_from_mooc(mooc_csv_path='/workspaces/gnn_static_and/data/mooc/raw/mooc.csv', similarity_threshold=0.8)
+    static_graph = build_static_graph_from_mooc(mooc_csv_path='/workspaces/GNN_DyandSt/data/mooc/raw/mooc.csv', similarity_threshold=0.8)
 
     # --- Dynamic Graph ---
-    dynamic_dataset = load_mooc_dynamic_dataset(mooc_csv_path='/workspaces/gnn_static_and/data/mooc/raw/mooc.csv', num_snapshots=10, in_dim=in_dim)
+    dynamic_dataset = load_mooc_dynamic_dataset(mooc_csv_path='/workspaces/GNN_DyandSt/data/mooc/raw/mooc.csv', num_snapshots=10, in_dim=in_dim)
 
     model.train()
     auc_scores = []
